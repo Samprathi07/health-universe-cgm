@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 
-const API_URL = "http://localhost:8000/api/readings";
-const MEALS_API_URL = "http://localhost:8000/api/meals";
+const API_URL = "https://health-universe-cgm.onrender.com/api/readings";
+const MEALS_API_URL = "https://health-universe-cgm.onrender.com/api/meals";
 
 function App() {
   const [glucose, setGlucose] = useState("");
@@ -349,7 +349,7 @@ CLINICAL OBSERVATIONS
     if (stdDev > 50) {
       report += `\n• High glucose variability detected (SD: ${stdDev} mg/dL)\n`;
       report += `   Recommendation: Focus on consistent meal timing and portions.\n`;
-    } else if (stdDev < 30) {
+    } else if stdDev < 30) {
       report += `\n✓ Excellent glucose stability (SD: ${stdDev} mg/dL)\n`;
     }
 
