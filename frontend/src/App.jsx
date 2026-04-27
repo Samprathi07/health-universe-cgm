@@ -349,7 +349,7 @@ CLINICAL OBSERVATIONS
     if (stdDev > 50) {
       report += `\n• High glucose variability detected (SD: ${stdDev} mg/dL)\n`;
       report += `   Recommendation: Focus on consistent meal timing and portions.\n`;
-    } else if stdDev < 30) {
+    } else if (stdDev < 30) {
       report += `\n✓ Excellent glucose stability (SD: ${stdDev} mg/dL)\n`;
     }
 
