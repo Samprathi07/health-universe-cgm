@@ -14,13 +14,11 @@ function App() {
   const [showReport, setShowReport] = useState(false);
   const [reportCopied, setReportCopied] = useState(false);
   
-  // Sensor activation date - saved permanently
   const [sensorActivationDate] = useState(() => {
     const saved = localStorage.getItem('sensorActivationDate');
     return saved ? new Date(saved) : new Date();
   });
   
-  // Patient Profile
   const [patientName, setPatientName] = useState(() => {
     return localStorage.getItem('patientName') || '';
   });
@@ -31,7 +29,6 @@ function App() {
     return localStorage.getItem('doctorName') || '';
   });
 
-  // Meal Form
   const [mealType, setMealType] = useState("Breakfast");
   const [foodDescription, setFoodDescription] = useState("");
   const [carbs, setCarbs] = useState("");
@@ -84,7 +81,6 @@ function App() {
     if (doctorName) localStorage.setItem('doctorName', doctorName);
   }, [doctorName]);
 
-  // Save sensor activation date
   useEffect(() => {
     if (sensorActivationDate) {
       localStorage.setItem('sensorActivationDate', sensorActivationDate.toISOString());
@@ -145,7 +141,7 @@ function App() {
   };
 
   const deleteReading = async (id) => {
-    if (!confirm("Are you sure you want to delete this reading?")) return;
+    if (!window.confirm("Are you sure you want to delete this reading?")) return;
     
     try {
       await fetch(`${API_URL}/${id}`, {
@@ -159,7 +155,7 @@ function App() {
   };
 
   const deleteMeal = async (id) => {
-    if (!confirm("Are you sure you want to delete this meal?")) return;
+    if (!window.confirm("Are you sure you want to delete this meal?")) return;
     
     try {
       await fetch(`${MEALS_API_URL}/${id}`, {
@@ -349,7 +345,7 @@ CLINICAL OBSERVATIONS
     if (stdDev > 50) {
       report += `\n• High glucose variability detected (SD: ${stdDev} mg/dL)\n`;
       report += `   Recommendation: Focus on consistent meal timing and portions.\n`;
-    } else if stdDev < 30) {
+    } else if (stdDev < 30) {
       report += `\n✓ Excellent glucose stability (SD: ${stdDev} mg/dL)\n`;
     }
 
@@ -464,7 +460,6 @@ For questions: samprathivangipuram@gmail.com
       insights.push("Only " + stats.normal + "% of readings are in range. Consider reviewing your diabetes management plan.");
     }
 
-    // Nutrition insights
     if (nutritionStats.mealCount > 0) {
       if (nutritionStats.avgCarbs > 60) {
         insights.push("🍞 Your meals average " + nutritionStats.avgCarbs + "g of carbs. Consider smaller portions to reduce glucose spikes.");
