@@ -201,7 +201,7 @@ function App() {
   };
 
   const calculateTimeInRange = () => {
-    if (readings.length === 0) return { low: 0, normal: 0, high: 0 };
+    if (readings.length === 0) return { low: 0, normal: 0, high: 0, lowCount: 0, normalCount: 0, highCount: 0, total: 0 };
     
     const low = readings.filter(r => r.glucose < 70).length;
     const high = readings.filter(r => r.glucose > 180).length;
@@ -673,6 +673,8 @@ For questions: samprathivangipuram@gmail.com
               <label>Age</label>
               <input
                 type="number"
+                step="1"
+                min="0"
                 placeholder="e.g., 45"
                 value={patientAge}
                 onChange={(e) => setPatientAge(e.target.value)}
@@ -846,6 +848,8 @@ For questions: samprathivangipuram@gmail.com
           <form onSubmit={addReading}>
             <input
               type="number"
+              step="1"
+              min="0"
               placeholder="Glucose level (e.g., 110)"
               value={glucose}
               onChange={(e) => setGlucose(e.target.value)}
@@ -884,18 +888,24 @@ For questions: samprathivangipuram@gmail.com
             <div className="nutrition-row">
               <input
                 type="number"
+                step="1"
+                min="0"
                 placeholder="Carbs (g)"
                 value={carbs}
                 onChange={(e) => setCarbs(e.target.value)}
               />
               <input
                 type="number"
+                step="1"
+                min="0"
                 placeholder="Protein (g)"
                 value={protein}
                 onChange={(e) => setProtein(e.target.value)}
               />
               <input
                 type="number"
+                step="1"
+                min="0"
                 placeholder="Water (oz)"
                 value={waterIntake}
                 onChange={(e) => setWaterIntake(e.target.value)}
