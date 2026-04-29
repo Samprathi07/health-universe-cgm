@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 
-const API_URL = "https://health-universe-cgm.onrender.com/api/readings";
-const MEALS_API_URL = "https://health-universe-cgm.onrender.com/api/meals";
+const API_URL = "http://localhost:8000/api/readings";
+const MEALS_API_URL = "http://localhost:8000/api/meals";
 
 function App() {
   const [glucose, setGlucose] = useState("");
